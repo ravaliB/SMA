@@ -1,0 +1,4 @@
+<context id="JNetworkProject" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://repast.org/scenario/context">
+  		<projection type="network" id="NetworkTest"/>
+		<projection type="continuous space" id="space"/>
+</context>
