@@ -1,5 +1,7 @@
 package jNetworkProject;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import repast.simphony.context.Context;
@@ -22,22 +24,41 @@ public class ScaleFreeNetworkContext {
 
 	private void addNodes(int nNodes) {
 		Random randGenerator = new Random();
+		List<Node> nodes = new ArrayList<Node>();
+		int nextSuccId = -1;
+		int succId = -1;
+		int IdItself = -1;
+		boolean isdir;
+		double weight;
 
+		// declaration des noeuds
 		for (int i = 0; i < nNodes; i++) {
 			Node node = new Node();
+			int nbdegrees = (int)(Math.random() * (nNodes-2)) + 2;
+			
 			node.setID(i);
-			int nbdegrees = randGenerator.nextInt(3 - 1 + 1) + 1;
 			node.setDegrees(nbdegrees);
+			nodes.add(node);
+		}
 
-			for (int j = 0; j < nbdegrees; j++) {
-				int idSucc = randGenerator.nextInt(nNodes);
-				double weight = randGenerator.nextDouble();
-				boolean isdirected = randGenerator.nextBoolean();
+		// declaration des successeurs (aleatoires)
+		for (Node nod : nodes) {
+			for (int i = 0; i < nod.getDegrees(); i++) {
 
-				node.setSuccessor(idSucc, isdirected, weight);
+				// boucle pour eviter d'avoir 2 fois le même successeur
+				while ((nod.getSuccessors().contains(nextSuccId))
+						|| (IdItself == succId)) {
+					succId = randGenerator.nextInt(nNodes);
+					nextSuccId = succId;
+				}
+
+				isdir = randGenerator.nextBoolean();
+				weight = randGenerator.nextDouble();
+				Node succ = nodes.get(succId);
+				nod.setSuccessor(succ, isdir, weight);
 			}
 
-			context.add(node);
+			context.add(nod);
 		}
 	}
 }

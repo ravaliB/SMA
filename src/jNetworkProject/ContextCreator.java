@@ -28,9 +28,8 @@ public class ContextCreator implements ContextBuilder<Object> {
 		
 		
 		RoadContext rctxt = new RoadContext(context, space);
-		rctxt.addCar(15);
+		rctxt.addCar(1);
 		
 		return context;
 	}
-
 }
