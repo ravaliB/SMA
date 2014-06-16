@@ -21,13 +21,15 @@ public class World {
 	public static void update_leave_edge(GNode from, GNode now)
 	{
 		Edge e = World.graph.getArc(from, now);
-		e.num_car--;
+		if (e != null)
+			e.num_car--;
 	}
 	
 	public static void update_enter_edge(GNode now, GNode to)
 	{
 		Edge e = World.graph.getArc(now, to);
-		e.num_car++;	
+		if (e != null)
+			e.num_car--;
 	}
 	
 }

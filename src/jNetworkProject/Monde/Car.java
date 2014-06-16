@@ -55,18 +55,17 @@ public class Car {
 			return;
 		}
 		
-		World.update_leave_edge(position, next);
-		
-		position = next;
-		
-		if (position == destination)
+	
+		if (next == destination)
 		{
 			System.out.println("VOITURE ARRIVEE");
 			return;
 		}
 		
+		World.update_leave_edge(position, next);	
+		position = next;
 		next = dijkstra.get_shortest_path(position, destination).get(1);
-		
+		World.update_enter_edge(position, next);
 		
 		NdPoint p1 = space.getLocation(position);
 		NdPoint p2 = space.getLocation(next);
@@ -74,7 +73,7 @@ public class Car {
 		dist_pos_to_next = World.graph.getArc(position, next).weight;
 		count = dist_pos_to_next;
 		
-		World.update_enter_edge(position, next);
+		
 	}
 
 	
