@@ -1,5 +1,6 @@
 package jNetworkProject;
 
+import jNetworkProject.Monde.World;
 import repast.simphony.context.Context;
 import repast.simphony.context.space.continuous.ContinuousSpaceFactory;
 import repast.simphony.context.space.continuous.ContinuousSpaceFactoryFinder;
@@ -26,10 +27,13 @@ public class ContextCreator implements ContextBuilder<Object> {
 		ScaleFreeNetworkContext sfnc = new ScaleFreeNetworkContext(context);
 		sfnc.buildNetwork();
 		
+		World.init(sfnc.getGraph());
 		
 		RoadContext rctxt = new RoadContext(context, space);
-		rctxt.addCar(1);
-		
+		//rctxt.addCar(2);
+		rctxt.addCar(1, 6);
+		rctxt.addCar(3, 1);
+		System.out.println("return context");
 		return context;
 	}
 }

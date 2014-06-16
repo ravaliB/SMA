@@ -1,5 +1,9 @@
 package jNetworkProject;
 
+import jNetworkProject.Graph.Edge;
+import jNetworkProject.Graph.GNode;
+import jNetworkProject.Graph.Graph;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -9,12 +13,72 @@ import repast.simphony.context.space.graph.NetworkBuilder;
 
 public class ScaleFreeNetworkContext {
 	private Context<Object> context;
+	private Graph g = null;
 
 	public ScaleFreeNetworkContext(Context<Object> context) {
 		this.context = context;
-		addNodes(10);
+		BuildGraph();
+	}
+	
+	private void BuildGraph()
+	{
+		this.g = new Graph();
+		
+		GNode A = new GNode(1);
+		GNode B = new GNode(2);
+		GNode C = new GNode(3);
+		GNode D = new GNode(4);
+		GNode E = new GNode(5);
+		GNode F = new GNode(6);
+
+		Edge AB = new Edge(A, B, 20);
+		Edge BC = new Edge(B, C, 30);
+		Edge AC = new Edge(A, C, 100);
+		Edge CD = new Edge(C, D, 1);
+		Edge CE = new Edge(C, E, 10);
+		Edge EF = new Edge(E, F, 55);
+		Edge CF = new Edge(C, F, 60);
+		
+
+		g.addNode(A);
+		g.addNode(B);
+		g.addNode(C);
+		g.addNode(D);
+		g.addNode(E);
+		g.addNode(F);
+		
+		g.addArc(AB);
+		g.addArc(BC);
+		g.addArc(AC);
+		g.addArc(CD);
+		g.addArc(CE);
+		g.addArc(EF);
+		g.addArc(CF);
+		
+
+		context.add(A);
+		context.add(B);
+		context.add(C);
+		context.add(D);
+		context.add(E);
+		context.add(F);
+		
+		context.add(AB);
+		context.add(BC);
+		context.add(AC);
+		context.add(CD);
+		context.add(CE);
+		context.add(EF);
+		context.add(CF);
+		
+		context.add(g);
 	}
 
+	public Graph getGraph()
+	{
+		return g;
+	}
+	
 	public void buildNetwork() {
 		NetworkBuilder<Object> builder = new NetworkBuilder<Object>(
 				"NetworkTest", context, true);
@@ -22,43 +86,5 @@ public class ScaleFreeNetworkContext {
 		builder.buildNetwork();
 	}
 
-	private void addNodes(int nNodes) {
-		Random randGenerator = new Random();
-		List<Node> nodes = new ArrayList<Node>();
-		int nextSuccId = -1;
-		int succId = -1;
-		int IdItself = -1;
-		boolean isdir;
-		double weight;
-
-		// declaration des noeuds
-		for (int i = 0; i < nNodes; i++) {
-			Node node = new Node();
-			int nbdegrees = (int)(Math.random() * (nNodes-2)) + 2;
-			
-			node.setID(i);
-			node.setDegrees(nbdegrees);
-			nodes.add(node);
-		}
-
-		// declaration des successeurs (aleatoires)
-		for (Node nod : nodes) {
-			for (int i = 0; i < nod.getDegrees(); i++) {
-
-				// boucle pour eviter d'avoir 2 fois le même successeur
-				while ((nod.getSuccessors().contains(nextSuccId))
-						|| (IdItself == succId)) {
-					succId = randGenerator.nextInt(nNodes);
-					nextSuccId = succId;
-				}
-
-				isdir = randGenerator.nextBoolean();
-				weight = randGenerator.nextDouble();
-				Node succ = nodes.get(succId);
-				nod.setSuccessor(succ, isdir, weight);
-			}
-
-			context.add(nod);
-		}
-	}
+	
 }

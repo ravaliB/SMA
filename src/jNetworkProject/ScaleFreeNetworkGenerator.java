@@ -1,5 +1,6 @@
 package jNetworkProject;
 
+import jNetworkProject.Graph.Edge;
 import repast.simphony.context.Context;
 import repast.simphony.context.space.graph.NetworkGenerator;
 import repast.simphony.space.graph.Network;
@@ -17,18 +18,16 @@ public class ScaleFreeNetworkGenerator implements NetworkGenerator<Object> {
 		if (context.isEmpty())
 			return null;
 		else {
+
 			for (Object obj : context) {
-				if (obj instanceof Node) {
-					Node node = (Node) obj;
-
-					for (int i = 0; i < node.getDegrees(); i++) {
-
-						RepastEdge<Object> edges = new RepastEdge<Object>(node,
-								node.getSuccessor(i), node.isDirected(i),
-								node.getWeightSuccessor(i));
+				if (obj instanceof Edge) {
+					Edge e = (Edge) obj;
+						RepastEdge<Object> edges = 
+								new RepastEdge<Object>(e.Node1,	e.Node2, false, e.weight);
 						network.addEdge(edges);
 					}
-				}
+
+				
 			}
 
 			return network;
