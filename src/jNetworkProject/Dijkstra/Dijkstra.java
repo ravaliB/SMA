@@ -68,8 +68,9 @@ public class Dijkstra {
 		int weight = World.graph.getArc(n1.node, n2.node).weight;
 		int num_car = World.graph.getArc(n1.node, n2.node).num_car;
 		
+			
 		//Si il y a plus de 20m par voiture : pas d'embouteillage
-		if (weight * 1000 / num_car > 20)
+		if (num_car == 0 || weight * 1000 / num_car > 20)
 		{
 			return weight;
 		}
