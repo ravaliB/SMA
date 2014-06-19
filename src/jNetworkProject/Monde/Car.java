@@ -28,6 +28,8 @@ public class Car {
 	private int count = 0;
 	private int speed_ = 50;
 	
+	private boolean arrive = false;
+	
 	Dijkstra dijkstra;
 	
 	public Car(ContinuousSpace<Object> space, GNode pos, GNode dst) {
@@ -58,7 +60,12 @@ public class Car {
 	
 		if (next == destination)
 		{
-			System.out.println("VOITURE ARRIVEE");
+			if (!arrive)
+			{
+				arrive = true;
+				System.out.println("VOITURE ARRIVEE");
+				World.update_leave_edge(position, next);
+			}
 			return;
 		}
 		

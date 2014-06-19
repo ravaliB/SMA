@@ -3,6 +3,7 @@ package jNetworkProject;
 import jNetworkProject.Graph.GNode;
 import jNetworkProject.Graph.Graph;
 import jNetworkProject.Monde.Car;
+import jNetworkProject.Monde.CarsCreator;
 
 import java.util.Random;
 
@@ -11,6 +12,7 @@ import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.continuous.NdPoint;
 
 public class RoadContext {
+	
 	private Context<Object> context;
 	private ContinuousSpace<Object> space;
 	private Graph g;
@@ -22,6 +24,8 @@ public class RoadContext {
 			if (obj instanceof Graph)
 				g = (Graph) obj;
 		}
+		
+		context.add(new CarsCreator(this));
 		
 		/*nodes = new ArrayList<Node>();
 		fillListAgent();*/

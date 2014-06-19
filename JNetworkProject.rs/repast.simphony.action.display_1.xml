@@ -3,26 +3,22 @@
   <type>TWO_D</type>
   <styles>
     <entry>
-      <string>jNetworkProject.Car</string>
+      <string>jNetworkProject.Graph.GNode</string>
+      <string>repast.simphony.visualizationOGL2D.DefaultStyleOGL2D</string>
+    </entry>
+    <entry>
+      <string>jNetworkProject.Monde.Car</string>
       <string>repast.simphony.visualization.editedStyle.EditedStyle2D</string>
-    </entry>
-    <entry>
-      <string>jNetworkProject.Node</string>
-      <string>repast.simphony.visualizationOGL2D.DefaultStyleOGL2D</string>
-    </entry>
-    <entry>
-      <string>jNetworkProject.GNode</string>
-      <string>repast.simphony.visualizationOGL2D.DefaultStyleOGL2D</string>
     </entry>
   </styles>
   <editedStyles>
     <entry>
-      <string>jNetworkProject.Car</string>
-      <string>jNetworkProject.Car.style_2.xml</string>
+      <string>jNetworkProject.Graph.GNode</string>
+      <null/>
     </entry>
     <entry>
-      <string>jNetworkProject.Node</string>
-      <null/>
+      <string>jNetworkProject.Monde.Car</string>
+      <string>jNetworkProject.Monde.Car.style_5.xml</string>
     </entry>
   </editedStyles>
   <netStyles>
@@ -45,19 +41,19 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>733375406</hashCode>
+    <hashCode>657711741</hashCode>
   </schedParams>
   <layoutClassName>foo.bar.baz</layoutClassName>
   <layoutProjection>space</layoutProjection>
   <layoutInterval>0</layoutInterval>
   <layerOrder>
     <entry>
-      <string>jNetworkProject.Car</string>
-      <int>1</int>
+      <string>jNetworkProject.Graph.GNode</string>
+      <int>0</int>
     </entry>
     <entry>
-      <string>jNetworkProject.GNode</string>
-      <int>0</int>
+      <string>jNetworkProject.Monde.Car</string>
+      <int>1</int>
     </entry>
   </layerOrder>
   <projections>

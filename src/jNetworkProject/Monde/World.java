@@ -21,7 +21,7 @@ public class World {
 	public static void update_leave_edge(GNode from, GNode now)
 	{
 		Edge e = World.graph.getArc(from, now);
-		if (e != null)
+		if (e != null && e.num_car != 0)
 			e.num_car--;
 	}
 	
@@ -29,7 +29,7 @@ public class World {
 	{
 		Edge e = World.graph.getArc(now, to);
 		if (e != null)
-			e.num_car--;
+			e.num_car++;
 	}
 	
 }

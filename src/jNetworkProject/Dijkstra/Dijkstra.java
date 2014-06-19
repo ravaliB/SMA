@@ -70,14 +70,16 @@ public class Dijkstra {
 		
 			
 		//Si il y a plus de 20m par voiture : pas d'embouteillage
-		if (num_car == 0 || weight * 1000 / num_car > 20)
+		if (num_car == 0 || weight / num_car > 7 )
+		//if (num_car == 0 || weight * 1000 / num_car > 20)
 		{
 			return weight;
 		}
 		else
 		{
-			int car_per_meter = weight * 1000 / num_car;
-			return weight + (20 - car_per_meter)*20;
+			int car_per_meter = weight * 2 / num_car; // weight * 1000 / num_car;	
+			return (weight + 10);
+			//return weight + (20 - car_per_meter)*20;
 		}
 			
 	}

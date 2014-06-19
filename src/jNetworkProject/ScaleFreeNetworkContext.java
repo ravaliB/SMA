@@ -24,6 +24,39 @@ public class ScaleFreeNetworkContext {
 	{
 		this.g = new Graph();
 		
+		//test rod
+		GNode A = new GNode(1);
+		GNode B = new GNode(2);
+		GNode C = new GNode(3);
+		GNode D = new GNode(4);
+		
+		Edge AB = new Edge(A, B, 30);
+		Edge BC = new Edge(B, C, 30);
+		Edge AC = new Edge(A, C, 5);
+		Edge BD = new Edge(B, D, 10);
+		
+		g.addNode(A);
+		g.addNode(B);
+		g.addNode(C);
+		g.addNode(D);
+		
+		g.addArc(AB);
+		g.addArc(BC);
+		g.addArc(AC);
+		g.addArc(BD);
+		
+		context.add(A);
+		context.add(B);
+		context.add(C);
+		context.add(D);
+		
+		context.add(AB);
+		context.add(BC);
+		context.add(AC);
+		context.add(BD);
+		
+		//end test rod
+	/*
 		GNode A = new GNode(1);
 		GNode B = new GNode(2);
 		GNode C = new GNode(3);
@@ -71,6 +104,7 @@ public class ScaleFreeNetworkContext {
 		context.add(EF);
 		context.add(CF);
 		
+		*/
 		context.add(g);
 	}
 
